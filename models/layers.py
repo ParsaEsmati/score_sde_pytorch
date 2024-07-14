@@ -461,7 +461,7 @@ class ResidualBlock(nn.Module):
     self.normalization = normalization
     if resample == 'down':
       if dilation > 1:
-        self.conv1 = ncsn_conv3x3(input_dim, input_dim, dilation=dilation)
+        self.conv1 = ncsn_conv3x3(input_dim, input_dim, dilation=dilation,padding=dilation)
         self.normalize2 = normalization(input_dim)
         self.conv2 = ncsn_conv3x3(input_dim, output_dim, dilation=dilation)
         conv_shortcut = partial(ncsn_conv3x3, dilation=dilation)
